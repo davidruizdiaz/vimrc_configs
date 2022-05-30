@@ -1,0 +1,45 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+set rtp+=c:/Users/investigador01/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'preservim/nerdtree'
+Plugin 'mattn/emmet-vim'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'vim-scripts/AutoComplPop'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+set encoding=UTF-8
+set nu
+set mouse=a
+set cursorline
+set smartindent
+set numberwidth=1
+set clipboard=unnamed
+syntax enable
+set showcmd
+set ruler
+set showmatch
+set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+set sw=4
+set relativenumber
+
+let mapleader=" "
+nmap <leader>f <Plug>(easymotion-s2)
+nmap <leader>nt :NERDTreeFind<CR> 
+let NERDTreeQuitOnOpen=1
+let g:airline_theme='luna'
