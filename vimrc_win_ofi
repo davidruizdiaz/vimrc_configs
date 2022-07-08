@@ -42,4 +42,40 @@ let mapleader=" "
 nmap <leader>f <Plug>(easymotion-s2)
 nmap <leader>nt :NERDTreeFind<CR> 
 let NERDTreeQuitOnOpen=1
+let NERDTreeShowHidden=1
 let g:airline_theme='luna'
+let g:snipMate = { 'snippet_version' : 1 }
+
+
+" # Configuración de archivos de recuperación #
+
+" Archivos de deshacer y rehacer
+if !isdirectory($HOME."/.vim")
+    silent! call mkdir($HOME."/.vim")
+endif
+if !isdirectory($HOME."/.vim/undo_dir")
+    silent! call mkdir($HOME."/.vim/undo_dir",)
+endif
+
+set undodir=$HOME/.vim/undo_dir//
+set undofile
+
+
+" Configuración de archivos de swap
+if !isdirectory($HOME."/.vim/tmp")
+    silent! call mkdir($HOME."/.vim/tmp")
+endif
+set directory=$HOME/.vim/tmp//
+
+
+" Configuración de archivos de backup y swap
+"if !isdirectory($HOME."/.vim/backupdir")
+"    silent! call mkdir($HOME."/.vim/backupdir")
+"endif
+
+"set backup
+"set backupdir=$HOME/.vim/backupdir//
+"set writebackup
+"set backupcopy=yes
+"au BufWritePre * let &bex = '@' . strftime("%F.%H:%M") " nombre del archivo
+
