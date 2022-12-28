@@ -20,10 +20,12 @@ set ignorecase                  " incluye mayúsculas y minúsculas en las búsq
 set viminfo='100,<9999,s100     " limita el tamaño de viminfo
 syntax on
 
+
 " para coc
 set nobackup
 set nowritebackup
 set updatetime=300
+
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }                 " buscador difuso, requiere instalar fzf, ripgrep, universal-ctags, silversearcher-ag, fd-find
@@ -31,12 +33,13 @@ Plug 'junegunn/fzf.vim'
 Plug 'pangloss/vim-javascript'                                      " soporte a javascript
 Plug 'neoclide/coc.nvim', {'branch': 'release'}                     " menú emergente, requiere nodejs (ver documentación)
 Plug 'vim-airline/vim-airline'                                      " barra de estado
-" Plug 'vim-airline/vim-airline-themes'                               " tema para la barra de estado
+Plug 'vim-airline/vim-airline-themes'                               " tema para la barra de estado
 Plug 'preservim/nerdtree'                                           " NERDTree
 Plug 'ryanoasis/vim-devicons'                                       " Iconos, requiere descargar fuentes
 Plug 'tpope/vim-surround'                                           " remplazo de brackets 
 Plug 'tpope/vim-fugitive'                                           " git para vim
 Plug 'jiangmiao/auto-pairs'                                         " autocompletado de brackets
+Plug 'tpope/vim-commentary'                                         " para comentarios
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}                 " multiples cursores
 call plug#end()
 
@@ -56,7 +59,7 @@ let NERDTreeShowHidden=1
 " Configuracion de airline
 let g:airline_powerline_fonts = 1
 set guifont=DroidSansMono\ Nerd\ Font\ 11
-" let g:airline_theme='luna'
+let g:airline_theme='badwolf'
 
 
 " # Configuraciones de coc #
