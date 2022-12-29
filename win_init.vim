@@ -17,6 +17,9 @@ set nohlsearch
 set incsearch
 set viminfo='100,<9999,s100
 syntax on
+colorscheme slate               " esquema de color, requiere, !mkdir -p ~/AppData/Local/nvim/colors
+                                " !cp $VIMRUNTIME/colors/slate.vim ~/AppData/Local/nvim/colors/slate.vim
+                                " ver más colores con :colorscheme
 
 call plug#begin('~/AppData/Local/nvim/plugged')
 
