@@ -19,7 +19,9 @@ set incsearch                   " búsquedas incrementales
 set ignorecase                  " incluye mayúsculas y minúsculas en las búsquedas
 set viminfo='100,<9999,s100     " limita el tamaño de viminfo
 syntax on
-
+colorscheme slate               " esquema de color, requiere, !mkdir -p ~/.config/nvim/colors
+                                " !cp $VIMRUNTIME/colors/slate.vim ~/.config/nvim/colors/slate.vim
+                                " ver más colores con :colorscheme
 
 " para coc
 set nobackup
