@@ -41,6 +41,7 @@ Plug 'ryanoasis/vim-devicons'                                       " Iconos, re
 Plug 'tpope/vim-surround'                                           " remplazo de brackets 
 Plug 'tpope/vim-fugitive'                                           " git para vim
 Plug 'jiangmiao/auto-pairs'                                         " autocompletado de brackets
+Plug 'Yggdroot/indentLine'                                          " marca la indentación
 Plug 'tpope/vim-commentary'                                         " para comentarios
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}                 " multiples cursores
 call plug#end()
@@ -96,6 +97,8 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Indentación
+let g:indentLine_char = '│'
 
 " mapeo para salida de terminal
 :tnoremap <Esc> <C-\><C-n>
