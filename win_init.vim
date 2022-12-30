@@ -39,6 +39,7 @@ Plug 'garbas/vim-snipmate'								            " snippets
 Plug 'honza/vim-snippets'								              " snippets
 Plug 'vim-scripts/AutoComplPop'							          " autocompletado
 Plug 'jiangmiao/auto-pairs'								            " autocompletar brackets
+Plug 'Yggdroot/indentLine'                            " marca la indentación
 Plug 'vim-airline/vim-airline'                        " barra de estado
 Plug 'vim-airline/vim-airline-themes'                 " tema para la barra de estado
 Plug 'ryanoasis/vim-devicons'                         " Iconos, requiere descargar fuentes
@@ -67,6 +68,8 @@ let g:airline_theme='badwolf'
 " SnipMate
 let g:snipMate = { 'snippet_version' : 1 }
 
+" Indentación
+let g:indentLine_char = '│'
 
 " # CONFIGURACIÓN DE ARCHIVOS DE RECUPERACIÓN #
 
