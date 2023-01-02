@@ -104,3 +104,14 @@ let g:indentLine_char = '│'
 :tnoremap <Esc> <C-\><C-n>
 " mapeo para apertura de terminal
 :imap ii <Esc>
+
+
+" <C-j> para saltar a la siguient opcion en coc_snippet
+let g:coc_snippet_next = '<c-j>'
+
+" <C-k> para saltar a la opcion anterior en coc_snippet
+let g:coc_snippet_prev = '<c-k>'
+
+" para saltar a $ opcion en coc_snippet
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
