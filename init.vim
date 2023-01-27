@@ -45,6 +45,10 @@ Plug 'jiangmiao/auto-pairs'                                         " autocomple
 Plug 'Yggdroot/indentLine'                                          " marca la indentación
 Plug 'tpope/vim-commentary'                                         " para comentarios
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}                 " multiples cursores
+Plug 'nvim-lua/plenary.nvim'                                        " soporte para emojis
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }            " soporte para emojis
+Plug 'xiyaowong/telescope-emoji.nvim'                         " emojis, colocar require(\"telescope\").load_extension(\"emoji\")
+                                                              " al final del archivo ./plugged/telescope.nvim/plugin/telescope.lua
 call plug#end()
 
 " Tecla lider
