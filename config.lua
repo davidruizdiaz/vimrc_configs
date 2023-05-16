@@ -34,6 +34,7 @@ lvim.leader = "space"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"                                       -- Guarda con ctrl-s
 lvim.keys.normal_mode["<leader>xx"] = ":TroubleToggle<CR>"                      -- Abre y cierra panel de inspección
 lvim.keys.normal_mode["<C-f>"] = ":Telescope current_buffer_fuzzy_find<CR>"     -- Búsqueda difusa de telescope
+lvim.keys.normal_mode["<leader>rr"] = ":lua require('rest-nvim').run()<CR>"                      -- Abre y cierra panel de inspección
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
@@ -96,6 +97,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "rust",
   "java",
   "yaml",
+  "http",           -- Para rest-nvim
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -125,6 +127,9 @@ lvim.builtin.treesitter.highlight.enable = true
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
 -- local opts = {} -- check the lspconfig documentation for a list of all possible options
 -- require("lvim.lsp.manager").setup("pyright", opts)
+require("lvim.lsp.manager").setup("emmet_ls", {
+  filetypes = { "css", "html", "javascript", "javascriptreact", "vue" },
+})
 
 -- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. !!Requires `:LvimCacheReset` to take effect!!
 -- ---`:LvimInfo` lists which server(s) are skipped for the current filetype
@@ -178,26 +183,33 @@ lvim.builtin.treesitter.highlight.enable = true
 
 -- # PLUGINS #
 lvim.plugins = {
-    {
-      "folke/trouble.nvim",                                 -- Panel para mensajes de inspección de código
-    },
-    {
-      "folke/todo-comments.nvim",                           -- Comentarios de TODO en colores
-      event = "BufRead",
-      config = function ()
-        require("todo-comments").setup()
-      end
-    },
-    {
-      "mg979/vim-visual-multi",                             -- Multicursores
-      branch = "master"
-    },
-    {
-      "xiyaowong/telescope-emoji.nvim",                     -- Para emojis
-      config = function ()
-        require("telescope").load_extension("emoji")
-      end
-    },
+  {
+    "aca/emmet_ls",                                       -- emmet
+  },
+  {
+    "folke/trouble.nvim",                                 -- Panel para mensajes de inspección de código
+  },
+  {
+    "folke/todo-comments.nvim",                           -- Comentarios de TODO en colores
+    event = "BufRead",
+    config = function ()
+      require("todo-comments").setup()
+    end
+  },
+  {
+    "mg979/vim-visual-multi",                             -- Multicursores
+    branch = "master"
+  },
+  {
+    "xiyaowong/telescope-emoji.nvim",                     -- Para emojis
+    config = function ()
+      require("telescope").load_extension("emoji")
+    end
+  },
+  {
+    "rest-nvim/rest.nvim",
+    requires = { "nvim-lua/plenary.nvim" },               -- Instalar jq y tidy para formatear http y json
+  }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
