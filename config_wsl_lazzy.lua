@@ -10,12 +10,12 @@ an executable
 
 -- #OPCIONES GENERALES DE VIM Y LVIM#
 -- Vim
-vim.opt.shiftwidth = 2          -- Cantidad de espacios de tabulación
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.expandtab = true        -- Cambia las tabulaciones por espacios
 vim.opt.autoindent = true       -- Auto-indentación
+vim.opt.expandtab = true        -- Cambia las tabulaciones por espacios
+vim.opt.shiftwidth = 2          -- Cantidad de espacios de tabulación
 vim.opt.smartindent = true      -- Auto-indentación
+-- vim.opt.softtabstop = 2      -- Hace que no se apliquen los espacios correctos
+vim.opt.tabstop = 2
 vim.opt.relativenumber = true   -- Número de líneas relativas
 vim.opt.backup = false          -- Creación de archivos de respaldo
 vim.opt.writebackup = false
@@ -98,6 +98,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "java",
   "yaml",
   "http",           -- Para rest-nvim
+  "php",
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -131,7 +132,32 @@ require("lvim.lsp.manager").setup("tsserver", {
   filetypes = { "css", "html", "javascript", "javascriptreact", "vue" },
 })
 require("lvim.lsp.manager").setup("emmet_ls", {
-  filetypes = { "css", "html", "javascript", "javascriptreact", "vue" },
+  filetypes = { "css", "html", "javascript", "javascriptreact", "vue", },
+})
+require("lvim.lsp.manager").setup("intelephense", {
+  filetypes = { "php", },
+})
+require("lvim.lsp.manager").setup("bashls", {
+  filetypes = { "sh", },
+})
+require("lvim.lsp.manager").setup("cssls", {
+  filetypes = { "css", "scss", "less" },
+})
+require("lvim.lsp.manager").setup("html", {
+  filetypes = { "html", "php" },
+})
+require("lvim.lsp.manager").setup("jsonls", {
+  filetypes = { "json", },
+})
+require("lvim.lsp.manager").setup("lua_ls", {
+  filetypes = { "lua", },
+})
+require("lvim.lsp.manager").setup("marksman", {})
+require("lvim.lsp.manager").setup("pyright", {
+  filetypes = { "py", },
+})
+require("lvim.lsp.manager").setup("vuels", {
+  filetypes = { "vue", },
 })
 
 -- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. !!Requires `:LvimCacheReset` to take effect!!
@@ -213,6 +239,9 @@ lvim.plugins = {
   {
     "rest-nvim/rest.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },               -- Instalar jq y tidy para formatear http y json
+  },
+  {
+    "jwalton512/vim-blade",
   }
 }
 
