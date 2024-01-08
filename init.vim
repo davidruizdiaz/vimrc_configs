@@ -35,6 +35,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'pangloss/vim-javascript'                                " soporte a javascript
   Plug 'neoclide/coc.nvim', {'branch': 'release'}               " menú emergente, requiere nodejs (ver documentación)
   Plug 'honza/vim-snippets'                                     " snippets
+  Plug 'mattn/emmet-vim'                                        " emmet
   Plug 'vim-airline/vim-airline'                                " barra de estado
   Plug 'vim-airline/vim-airline-themes'                         " tema para la barra de estado
   Plug 'preservim/nerdtree'                                     " NERDTree
@@ -49,6 +50,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }      " soporte para emojis
   Plug 'xiyaowong/telescope-emoji.nvim'                         " emojis, colocar require(\"telescope\").load_extension(\"emoji\")
                                                                 " al final del archivo ./plugged/telescope.nvim/plugin/telescope.lua
+  Plug 'diepm/vim-rest-console'                                 " consultas rest. Dependencias: curl (ver documentación)
 call plug#end()
 
 " Tecla lider
@@ -129,3 +131,9 @@ let mapleader=" "
   " Word completion with custom spec with popup layout option
   inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'window': { 'width': 0.2, 'height': 0.9, 'xoffset': 1 }})
 "</FZF BUSCADOR DIFUSO>
+
+"<VIM-REST-CONSOLEE>
+  let g:vrc_split_request_body = 1  
+  let g:vrc_output_buffer_name = '__VRC_OUTPUT.json'
+  set ft=json
+"</VIM-REST-CONSOLEE>
