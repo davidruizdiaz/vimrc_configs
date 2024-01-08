@@ -35,7 +35,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'pangloss/vim-javascript'                                " soporte a javascript
   Plug 'neoclide/coc.nvim', {'branch': 'release'}               " menú emergente, requiere nodejs (ver documentación)
   Plug 'honza/vim-snippets'                                     " snippets
-  Plug 'mattn/emmet-vim'                                        " emmet
   Plug 'vim-airline/vim-airline'                                " barra de estado
   Plug 'vim-airline/vim-airline-themes'                         " tema para la barra de estado
   Plug 'preservim/nerdtree'                                     " NERDTree
