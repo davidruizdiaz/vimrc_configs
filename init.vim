@@ -73,13 +73,32 @@ let mapleader=" "
 "</AIRLINE>
 
 "<COC>
-  let g:coc_global_extensions = [ 'coc-tsserver' ]
-  " establece enter como selector de opciones
+  " Para que no aparezca seleccionada la primera opción del menu emergente
+  inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+  inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+  " Seleccionar opción con enter (<CR>) o deshacer con ctrl-u (<C-g>u) 
   inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                                \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-  " usa K para mostrar la documentación
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  function! CheckBackspace() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
+  "Usar ctrl-espacio (<c-space>) para disparar opciones
+  if has('nvim')
+    inoremap <silent><expr> <c-space> coc#refresh()
+  else
+    inoremap <silent><expr> <c-@> coc#refresh()
+  endif
+  " GoTo navegación del código
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references) 
+  " Usar K para mostrar la documentación en ventana de vista previa
   nnoremap <silent> K :call ShowDocumentation()<CR>
-
   function! ShowDocumentation()
     if CocAction('hasProvider', 'hover')
       call CocActionAsync('doHover')
@@ -87,18 +106,20 @@ let mapleader=" "
       call feedkeys('K', 'in')
     endif
   endfunction
-
-  " GoTo navegación de codigo con coc.
-  nmap <silent> gd <Plug>(coc-definition)
-  nmap <silent> gy <Plug>(coc-type-definition)
-  nmap <silent> gi <Plug>(coc-implementation)
-  nmap <silent> gr <Plug>(coc-references)
-  " <C-j> para saltar a la siguient opcion en coc_snippet
-  let g:coc_snippet_next = '<c-j>'
-  " <C-k> para saltar a la opcion anterior en coc_snippet
-  let g:coc_snippet_prev = '<c-k>'
-  " para saltar a $ opcion en coc_snippet
-  imap <C-j> <Plug>(coc-snippets-expand-jump)
+  " Formatear el código seleccionado
+  xmap <leader>f  <Plug>(coc-format-selected)
+  nmap <leader>f  <Plug>(coc-format-selected)
+  augroup mygroup
+    autocmd!
+    " Setup formatexpr specified filetype(s)
+    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  augroup end
+  " Soporte para el statusline.
+  set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+  " Para coc-laravel
+  au FileType php,blade let b:coc_root_patterns = ['.git', '.env', 'composer.json', 'artisan'] 
 "</COC>
 
 "<VARIOS>
